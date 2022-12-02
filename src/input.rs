@@ -4,7 +4,7 @@ use std::env;
 use dotenv;
 
 pub fn get_input() -> Box<str> {
-    dotenv::dotenv().ok();
+    dotenv::dotenv();
     let now = Local::now();
     let session = env::var("SESSION").unwrap();
 
