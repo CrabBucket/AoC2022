@@ -4,8 +4,7 @@ use crate::input::get_input;
 
 use super::super::input;
 
-pub fn run_part_1() {
-    let input = get_input();
+pub fn run_part_1(input: &str) {
     let split = input.split("\n\n");
     let mut big_elf = -1;
     for elf in split {
@@ -65,9 +64,8 @@ impl ElfTracker {
 
 
 
-pub fn run_part_2() {
+pub fn run_part_2(input: &str) {
     let mut elf_tracker = ElfTracker::new();
-    let input = get_input();
     let split = input.split("\n\n");
     let mut big_elf = -1;
     for elf in split {

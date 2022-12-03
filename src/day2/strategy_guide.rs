@@ -96,8 +96,7 @@ impl Move {
         }
     }
 }
-pub fn run_part_1() {
-    let raw_input = get_input();
+pub fn run_part_1(raw_input: &str) {
     let input = raw_input.trim_end();
 
     let mut total_points = 0;
@@ -112,8 +111,7 @@ pub fn run_part_1() {
     }
     println!("With the Elf's strategy you would get: {}", total_points);
 }
-pub fn run_part_2() {
-    let raw_input = get_input();
+pub fn run_part_2(raw_input: &str) {
     let input = raw_input.trim_end();
 
     let mut total_points = 0;
