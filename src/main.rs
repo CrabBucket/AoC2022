@@ -13,7 +13,7 @@ fn main() {
     let input = get_input(5);
     let start = std::time::Instant::now();
     println!();
-    println!("Test: \n{} " ,day5::solve_part_1(&input));
+    println!("Test: \n{} " ,day5::solve_part_2(&input));
     let duration = start.elapsed();
     println!("Time elapsed in expensive_function() is: {:?}", duration);
     

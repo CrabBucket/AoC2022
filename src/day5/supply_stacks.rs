@@ -48,6 +48,20 @@ impl SupplyStacks {
             self.move_stack(from, to);
         }
     }
+    pub fn move_n_special(&mut self, n: u32, from: usize, to: usize) {
+        
+        let from_stack = &mut self.stacks[from];
+        let mut temp_stack = Vec::<char>::new();
+        let remove_index = from_stack.len() - n as usize;
+        for iter in 0..n {
+            let from_top = from_stack.remove(remove_index);
+            
+            temp_stack.push(from_top);
+        }
+        self.stacks[to].append(&mut temp_stack);
+
+        
+    }
     pub fn to_string(&self) -> String {
         let mut output = String::new();
         let mut string = String::new();
@@ -92,9 +106,34 @@ pub fn solve_part_1(input: &str) -> String {
     for line in lines {
         let relevant_text = line.rsplitn(6, ' ').collect::<Vec<&str>>();
         let (n,from,to) = (relevant_text[4],relevant_text[2],relevant_text[0]);
-        println!("Move : {} From: {} To: {}", n, from, to);
+        // println!("Move : {} From: {} To: {}", n, from, to);
         stacks.move_n(n.parse::<u32>().unwrap(), from.parse::<usize>().unwrap()-1, to.parse::<usize>().unwrap()-1);
-        println!("{}",stacks.to_string());
+        // println!("{}",stacks.to_string());
+
+    }
+    stacks.to_string()
+
+
+
+
+}
+
+pub fn solve_part_2(input: &str) -> String {
+
+    let mut lines = input.lines();
+    
+    let mut stacks = SupplyStacks::new(&mut lines, 8,9);
+    println!("{}", stacks.to_string());
+    lines.next().unwrap();
+    lines.next().unwrap();
+    let mut max = 30;
+    let mut current = 0;
+    for line in lines {
+        let relevant_text = line.rsplitn(6, ' ').collect::<Vec<&str>>();
+        let (n,from,to) = (relevant_text[4],relevant_text[2],relevant_text[0]);
+        // println!("Move : {} From: {} To: {}", n, from, to);
+        stacks.move_n_special(n.parse::<u32>().unwrap(), from.parse::<usize>().unwrap()-1, to.parse::<usize>().unwrap()-1);
+        // println!("{}",stacks.to_string());
 
     }
     stacks.to_string()
