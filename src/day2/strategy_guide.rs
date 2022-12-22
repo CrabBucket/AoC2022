@@ -1,4 +1,3 @@
-use crate::input::get_input;
 enum MatchResult {
     Win,
     Lose,

@@ -13,7 +13,7 @@ impl SupplyStacks {
         for _ in 0..width {
             stacks.push(Vec::<char>::new());
         }
-        for line in 0..height {
+        for _ in 0..height {
             let line: Vec<char> = lines.next().unwrap().chars().collect();
 
             for bin in 0..width {
@@ -27,9 +27,8 @@ impl SupplyStacks {
     }
     fn get_max_len(&self) -> usize {
         let mut max_len = 0;
-        let mut current_len = 0;
         for stack in &self.stacks {
-            current_len = stack.len();
+            let current_len = stack.len();
             if current_len > max_len {
                 max_len = current_len;
             }
@@ -53,7 +52,7 @@ impl SupplyStacks {
         let from_stack = &mut self.stacks[from];
         let mut temp_stack = Vec::<char>::new();
         let remove_index = from_stack.len() - n as usize;
-        for iter in 0..n {
+        for _ in 0..n {
             let from_top = from_stack.remove(remove_index);
             
             temp_stack.push(from_top);
@@ -101,8 +100,6 @@ pub fn solve_part_1(input: &str) -> String {
     println!("{}", stacks.to_string());
     lines.next().unwrap();
     lines.next().unwrap();
-    let mut max = 30;
-    let mut current = 0;
     for line in lines {
         let relevant_text = line.rsplitn(6, ' ').collect::<Vec<&str>>();
         let (n,from,to) = (relevant_text[4],relevant_text[2],relevant_text[0]);
@@ -126,8 +123,6 @@ pub fn solve_part_2(input: &str) -> String {
     println!("{}", stacks.to_string());
     lines.next().unwrap();
     lines.next().unwrap();
-    let mut max = 30;
-    let mut current = 0;
     for line in lines {
         let relevant_text = line.rsplitn(6, ' ').collect::<Vec<&str>>();
         let (n,from,to) = (relevant_text[4],relevant_text[2],relevant_text[0]);

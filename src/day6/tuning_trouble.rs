@@ -1,4 +1,4 @@
-use std::{collections::VecDeque, fmt::Formatter};
+use std::{collections::VecDeque};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 struct Recent {
@@ -62,7 +62,6 @@ impl Recent {
 pub fn solve_part_1(input: &str) -> String {
     let mut recent = Recent::new(input,4);
     // println!("{:?}", recent);
-    let mut loops = 0;
     while !recent.is_unique() {
         // if loops > 10 {
         //     break;
@@ -80,7 +79,6 @@ pub fn solve_part_1(input: &str) -> String {
 pub fn solve_part_2(input: &str) -> String {
     let mut recent = Recent::new(input,14);
     // println!("{:?}", recent);
-    let mut loops = 0;
     while !recent.is_unique() {
         // if loops > 10 {
         //     break;

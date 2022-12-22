@@ -5,15 +5,13 @@ struct Grid {
 impl Grid {
 
     pub fn compute_scenic(&self, height: i32, x: usize, y: usize) -> u32 {
-        let mut scenic = 0;
-        let (mut yIndex, mut xIndex) = (y, x);
 
         let left_score = self.block_distance(height, x, y, Direction::Left);
         let right_score = self.block_distance(height, x, y, Direction::Right);
         let up_score = self.block_distance(height, x, y, Direction::Up);
         let down_score = self.block_distance(height, x, y, Direction::Down);
 
-        scenic = left_score * right_score * up_score * down_score;
+        let scenic = left_score * right_score * up_score * down_score;
 
         return scenic;
 
@@ -82,11 +80,10 @@ impl Grid {
     }
 
     pub fn cast_left(&mut self) {
-        let (mut x, mut y) = (0, 0);
-
+        let mut y = 0;
         while y < self.trees.len() {
             let mut max_height = -1;
-            x=0;
+            let mut x=0;
             while x < self.trees.len() {
                 let tree = &mut self.trees[y as usize][x as usize];
                 if tree.height > max_height {
@@ -100,11 +97,10 @@ impl Grid {
         }
     }
     pub fn cast_right(&mut self) {
-        let (mut x, mut y) = (self.trees[0].len() as i32 - 1, 0);
-
+        let mut y = 0;
         while y < self.trees.len() {
             let mut max_height = -1;
-            x = self.trees.len() as i32 - 1;
+            let mut x = self.trees.len() as i32 - 1;
             while x >= 0 {
                 let tree = &mut self.trees[y as usize][x as usize];
                 if tree.height > max_height {
@@ -118,12 +114,11 @@ impl Grid {
         }
     }
     pub fn cast_down(&mut self) {
-        let (mut x, mut y) = (0, 0);
 
-
+        let mut x = 0;
         while x < self.trees.len() {
             let mut max_height = -1;
-            y = 0;
+            let mut y = 0;
             while y < self.trees.len() {
                 let tree = &mut self.trees[y as usize][x as usize];
                 if tree.height > max_height {
@@ -137,10 +132,9 @@ impl Grid {
         }
     }
     pub fn cast_up(&mut self) {
-        let (mut x, mut y) = (self.trees[0].len() as i32 - 1, self.trees.len() as i32 - 1);
-
+        let mut x = self.trees[0].len() as i32 - 1;
         while x >= 0 {
-            y =  self.trees.len() as i32-1;
+            let mut y =  self.trees.len() as i32-1;
             let mut max_height = -1;
             while y >= 0 {
                 let tree = &mut self.trees[y as usize][x as usize];
@@ -201,7 +195,7 @@ pub fn solve_part_1(input: String) -> String {
 }
 
 pub fn solve_part_2(input: String) -> String {
-    let mut grid = Grid::new(input);
+    let grid = Grid::new(input);
     let mut scenics = Vec::new();
     for y in 0..grid.trees.len() {
         for x in 0..grid.trees[0].len() {

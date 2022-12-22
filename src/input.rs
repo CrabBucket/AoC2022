@@ -4,7 +4,7 @@ use std::env;
 use dotenv;
 
 pub fn get_input(day: u8) -> Box<str> {
-    dotenv::dotenv();
+    dotenv::dotenv().ok();
     let now = Local::now();
     let session = env::var("SESSION").unwrap();
 

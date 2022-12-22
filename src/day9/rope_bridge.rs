@@ -139,7 +139,7 @@ impl Knot {
 
 pub fn solve_part_1(input: String) -> String {
     let mut model = PhysicsModel::new();
-    let mut lines = input.lines();
+    let lines = input.lines();
 
     for line in lines {
         model.move_n(MotionCommand::new(line.to_string()));
@@ -157,7 +157,7 @@ pub fn solve_part_2(input: String) -> String {
             visited: HashSet::new(),
         });
     }
-    let mut lines = input.lines();
+    let lines = input.lines();
 
     for line in lines {
         model.move_n(MotionCommand::new(line.to_string()));

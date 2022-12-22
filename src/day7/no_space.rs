@@ -82,7 +82,7 @@ pub fn solve_part_1(input: &str) -> String {
     let mut current_dir = dir_arena.add_dir("/".to_string(), 0, None);
 
     while line.is_some() {
-        let mut current_line = line.unwrap();
+        let current_line = line.unwrap();
 
         if current_line.starts_with('$') {
             // println!("{}", current_line);
@@ -99,13 +99,13 @@ pub fn solve_part_1(input: &str) -> String {
                     // println!("cd: {}", dir);
                     // println!("current_dir: {:?}", &dir_alias);
 
-                    let foundId = dir_alias
+                    let found_id = dir_alias
                         .children
                         .iter()
                         .find(|id| dir_arena.get(**id).name == dir)
                         .unwrap();
 
-                    current_dir = *foundId;
+                    current_dir = *found_id;
 
                     // println!("current_dir: {:?}", current_dir);
 
@@ -143,7 +143,7 @@ pub fn solve_part_2(input: &str) -> String {
     let mut current_dir = dir_arena.add_dir("/".to_string(), 0, None);
 
     while line.is_some() {
-        let mut current_line = line.unwrap();
+        let current_line = line.unwrap();
 
         if current_line.starts_with('$') {
             // println!("{}", current_line);
@@ -160,13 +160,13 @@ pub fn solve_part_2(input: &str) -> String {
                     // println!("cd: {}", dir);
                     // println!("current_dir: {:?}", &dir_alias);
 
-                    let foundId = dir_alias
+                    let found_id = dir_alias
                         .children
                         .iter()
                         .find(|id| dir_arena.get(**id).name == dir)
                         .unwrap();
 
-                    current_dir = *foundId;
+                    current_dir = *found_id;
 
                     // println!("current_dir: {:?}", current_dir);
 

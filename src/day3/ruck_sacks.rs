@@ -3,7 +3,6 @@ use std::collections::HashMap;
 pub fn solve_part_1(input: &str) {
     let fixed_input = input.trim_end();
     let lines = fixed_input.lines();
-    let ave = &fixed_input.lines().count() * 26;
 
     //These could be hash sets but they track which characters we have seen in each line
     let mut first_bin: HashMap<char, bool> = HashMap::new();
@@ -20,7 +19,7 @@ pub fn solve_part_1(input: &str) {
         // if line == "fggNNffGmcBrmBfcDzzzpHbsGTpszwwTbp" {
         //     println!("{} : {}", compartments.0, compartments.1);
         // }
-        for index in 0..compartments.0.len() {
+        for _ in 0..compartments.0.len() {
             //We consume every character in both strings by calling nth
             let first_char = first.nth(0).unwrap();
             let second_char = second.nth(0).unwrap();
@@ -90,7 +89,7 @@ pub fn solve_part_2(input: &str) {
             (lines[0].chars(), lines[1].chars(), lines[2].chars());
 
         // Iterate over each line manually in 3 for loops. This is not ideal but it works.
-        for index in 0..lines[0].len() {
+        for _ in 0..lines[0].len() {
             //We consume every character in all three strings by calling nth
             let char = chars1.nth(0).unwrap();
             //Handle the hashmap update with correct flag setting.
@@ -106,7 +105,7 @@ pub fn solve_part_2(input: &str) {
                 first_bin.insert(char, (true, false, false));
             }
         }
-        for index in 0..lines[1].len() {
+        for _ in 0..lines[1].len() {
             let char = chars2.nth(0).unwrap();
             if first_bin.contains_key(&char) {
                 let flags = first_bin.get(&char).unwrap();
@@ -119,7 +118,7 @@ pub fn solve_part_2(input: &str) {
                 first_bin.insert(char, (false, true, false));
             }
         }
-        for index in 0..lines[2].len() {
+        for _ in 0..lines[2].len() {
             let char = chars3.nth(0).unwrap();
             if first_bin.contains_key(&char) {
                 let flags = first_bin.get(&char).unwrap();
